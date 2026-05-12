@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 
 const BAUD_RATES = [115200, 57600, 9600];
 
-const BEEP_GAIN = 4.0; // 1.0 = original volume, 2.0 = double, 3.0 = triple
+const BEEP_GAIN = 4.0;
 
 const styles = {
   wrapper: {

@@ -15,7 +15,7 @@ const int PWM_CHANNELS[] = { 0, 1, 2, 3, 4, 5 };
 
 // Capacitive touch
 const int TOUCH_PIN = 33;        // T8
-const int TOUCH_THRESHOLD = 40;  // lower = touched; tune this for your setup
+const int TOUCH_THRESHOLD = 40;
 const unsigned long TOUCH_COOLDOWN_MS = 1500;
 
 const unsigned long FADE_DURATION_MS = 2000;
@@ -57,15 +57,14 @@ void clearAll() {
   setAllPWM(0);
 }
 
-// Fade all LEDs from off to full brightness over FADE_DURATION_MS
-// Uses exponential curve to match human brightness perception
+// Fade all LEDs from off to full brightness
 void fadeInAll() {
   unsigned long start = millis();
   while (true) {
     unsigned long elapsed = millis() - start;
     if (elapsed >= FADE_DURATION_MS) break;
  
-    float t = (float)elapsed / FADE_DURATION_MS; // 0.0 -> 1.0
+    float t = (float)elapsed / FADE_DURATION_MS;
     float curved = t * t * t;                     // cubic ease-in
     int brightness = (int)(curved * 255);
  
